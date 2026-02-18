@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="AYASC – Connecting and transforming local businesses through automation, AI, and digital excellence." />
+  <title>AYASC | Digital Transformation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-inner">
+      <svg class="loader-logo-svg" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="196" height="66" rx="5" fill="none" stroke="rgba(0,255,157,0.3)" stroke-width="1"
+          stroke-dasharray="6 4" />
+        <path d="M2,14 L2,2 L14,2" fill="none" stroke="#00ff9d" stroke-width="1.5" />
+        <path d="M186,2 L198,2 L198,14" fill="none" stroke="#00ff9d" stroke-width="1.5" />
+        <path d="M198,56 L198,68 L186,68" fill="none" stroke="#00ff9d" stroke-width="1.5" />
+        <path d="M14,68 L2,68 L2,56" fill="none" stroke="#00ff9d" stroke-width="1.5" />
+        <text x="100" y="38" dominant-baseline="middle" text-anchor="middle" font-family="Syne,sans-serif"
+          font-weight="800" font-size="28" fill="#00ff9d" letter-spacing="6">AYASC</text>
+        <line x1="40" y1="54" x2="160" y2="54" stroke="rgba(0,255,157,0.3)" stroke-width="0.8" />
+        <circle cx="40" cy="54" r="1.5" fill="#00ff9d" opacity="0.6" />
+        <circle cx="100" cy="54" r="2.5" fill="#00ff9d" opacity="0.9" />
+        <circle cx="160" cy="54" r="1.5" fill="#00ff9d" opacity="0.6" />
+      </svg>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <p class="loader-text" id="loaderText">Initializing...</p>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#hero"><img src="logo.png" class="logoimg"></a>
+    <!-- <a href="#hero" class="nav-logo-link">
+      <svg class="nav-logo-svg" viewBox="0 0 148 46" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="146" height="44" rx="4" fill="none"
+          stroke="rgba(0,255,157,0.22)" stroke-width="0.8" stroke-dasharray="4 3"/>
+        <path d="M1,9 L1,1 L9,1" fill="none" stroke="#00ff9d" stroke-width="1.3"/>
+        <path d="M139,1 L147,1 L147,9" fill="none" stroke="#00ff9d" stroke-width="1.3"/>
+        <path d="M147,37 L147,45 L139,45" fill="none" stroke="#00ff9d" stroke-width="1.3"/>
+        <path d="M9,45 L1,45 L1,37" fill="none" stroke="#00ff9d" stroke-width="1.3"/>
+        <text x="74" y="24" dominant-baseline="middle" text-anchor="middle"
+          font-family="Syne,sans-serif" font-weight="800" font-size="18" fill="#00ff9d" letter-spacing="4">AYASC</text>
+        <line x1="28" y1="36" x2="120" y2="36" stroke="rgba(0,255,157,0.28)" stroke-width="0.6"/>
+        <circle cx="28"  cy="36" r="1.2" fill="#00ff9d" opacity="0.55"/>
+        <circle cx="74"  cy="36" r="1.8" fill="#00ff9d" opacity="0.85"/>
+        <circle cx="120" cy="36" r="1.2" fill="#00ff9d" opacity="0.55"/>
+      </svg> -->
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#network" class="nav-link">Network</a></li>
+      <li><a href="#automation" class="nav-link">Automation</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#ai" class="nav-link">AI</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+    </ul>
+    <a href="#about" class="nav-cta">Work With Us</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <!-- Watermark logo -->
+    <div class="hero-watermark" aria-hidden="true">
+      <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="496" height="156" rx="10" fill="none" stroke="rgba(0,255,157,0.06)" stroke-width="2"
+          stroke-dasharray="10 8" />
+        <path d="M2,24 L2,2 L24,2" fill="none" stroke="rgba(0,255,157,0.14)" stroke-width="2" />
+        <path d="M476,2 L498,2 L498,24" fill="none" stroke="rgba(0,255,157,0.14)" stroke-width="2" />
+        <path d="M498,134 L498,158 L476,158" fill="none" stroke="rgba(0,255,157,0.14)" stroke-width="2" />
+        <path d="M24,158 L2,158 L2,134" fill="none" stroke="rgba(0,255,157,0.14)" stroke-width="2" />
+        <text x="250" y="94" dominant-baseline="middle" text-anchor="middle" font-family="Syne,sans-serif"
+          font-weight="800" font-size="80" fill="rgba(0,255,157,0.04)" letter-spacing="14">AYASC</text>
+        <line x1="50" y1="130" x2="450" y2="130" stroke="rgba(0,255,157,0.07)" stroke-width="1" />
+        <circle cx="50" cy="130" r="3" fill="rgba(0,255,157,0.12)" />
+        <circle cx="250" cy="130" r="5" fill="rgba(0,255,157,0.18)" />
+        <circle cx="450" cy="130" r="3" fill="rgba(0,255,157,0.12)" />
+        <line x1="50" y1="127" x2="50" y2="133" stroke="rgba(0,255,157,0.12)" stroke-width="1" />
+        <line x1="450" y1="127" x2="450" y2="133" stroke="rgba(0,255,157,0.12)" stroke-width="1" />
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">Digital Transformation Agency</div>
+      <h1 class="hero-title">
+        <span>We Connect</span>
+        <span class="accent">&amp; Transform</span>
+        <span>Local Businesses.</span>
+      </h1>
+      <p class="hero-sub">AYASC bridges the gap between ambition and growth — automating operations, amplifying reach,
+        and building digital foundations that make businesses unstoppable.</p>
+      <div class="hero-ctas">
+        <a href="#network" class="btn-primary">Explore Services</a>
+        <a href="#about" class="btn-ghost">Work With Us ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-val"><span class="counter" data-to="200">0</span><span>+</span></div>
+          <p>Businesses Connected</p>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-val"><span class="counter" data-to="85">0</span><span>%</span></div>
+          <p>Avg. Efficiency Gain</p>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-val"><span class="counter" data-to="3">0</span><span>x</span></div>
+          <p>Average ROI Growth</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>SCROLL</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ===== NETWORK ===== -->
+  <section class="sec network-sec" id="network">
+    <div class="sec-tag">01 — Business Network</div>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title anim">The AYASC<br><em>Business Network</em></h2>
+        <p class="sec-desc anim" style="--d:.15s">A unified digital infrastructure connecting verified local businesses
+          through intelligent dashboards, CRM systems, and government-integrated communication ecosystems.</p>
+      </div>
+
+      <div class="net-grid">
+        <div class="net-cards left-cards">
+          <div class="net-card anim" style="--d:0s">
+            <div class="nc-icon">✓</div>
+            <h4>Verified Profiles</h4>
+            <p>Every business authenticated and certified for trust across the network.</p>
+          </div>
+          <div class="net-card anim" style="--d:.15s">
+            <div class="nc-icon">📊</div>
+            <h4>CRM &amp; Dashboards</h4>
+            <p>Real-time insights and customer relationship tools built for local scale.</p>
+          </div>
+        </div>
+
+        <div class="net-phone anim" style="--d:.1s">
+          <div class="phone-wrap">
+            <div class="phone-notch"></div>
+            <div class="ph-screen">
+              <div class="ph-hdr">
+                <div class="ph-avatar"></div>
+                <div class="ph-hdr-info"><span>AYASC Hub</span><small>● Live</small></div>
+                <span style="margin-left:auto;font-size:.8rem">🔔</span>
+              </div>
+              <div class="ph-stats-row">
+                <div class="ph-stat-box"><strong>142</strong><small>Businesses</small></div>
+                <div class="ph-stat-box"><strong>98%</strong><small>Verified</small></div>
+              </div>
+              <div class="ph-bars">
+                <div class="ph-bar-row"><span>Revenue</span>
+                  <div class="ph-track">
+                    <div class="ph-fill" data-w="78"></div>
+                  </div>
+                </div>
+                <div class="ph-bar-row"><span>Leads</span>
+                  <div class="ph-track">
+                    <div class="ph-fill" data-w="62"></div>
+                  </div>
+                </div>
+                <div class="ph-bar-row"><span>Growth</span>
+                  <div class="ph-track">
+                    <div class="ph-fill" data-w="91"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ph-mini-chart">
+                <svg viewBox="0 0 160 44" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#00ff9d" stop-opacity=".4" />
+                      <stop offset="100%" stop-color="#00ff9d" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <polygon points="0,38 20,33 50,26 80,18 110,11 140,5 160,2 160,44 0,44" fill="url(#mg)" />
+                  <polyline points="0,38 20,33 50,26 80,18 110,11 140,5 160,2" fill="none" stroke="#00ff9d"
+                    stroke-width="1.5" />
+                </svg>
+              </div>
+              <div class="ph-nav-row">
+                <span>⊞</span><span>💬</span><span>📈</span><span>🔗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="net-cards right-cards">
+          <div class="net-card anim" style="--d:.2s">
+            <div class="nc-icon">🏛</div>
+            <h4>Government Integration</h4>
+            <p>Seamlessly connected with official systems for compliance and access.</p>
+          </div>
+          <div class="net-card anim" style="--d:.35s">
+            <div class="nc-icon">💬</div>
+            <h4>Unified Communication</h4>
+            <p>One platform for messaging, updates, and collaborative ecosystems.</p>
+          </div>
+        </div>
+      </div>
+
+      <svg class="conn-svg" id="connSvg" aria-hidden="true"></svg>
+    </div>
+  </section>
+
+  <!-- ===== AUTOMATION ===== -->
+  <section class="sec auto-sec" id="automation">
+    <div class="sec-tag">02 — Automation</div>
+    <div class="wrap">
+      <div class="two-col">
+        <div class="col-left">
+          <h2 class="sec-title anim">Manual →<br><em>Machine Precision</em></h2>
+          <p class="sec-desc anim" style="--d:.12s">We eliminate repetitive bottlenecks and replace human error with
+            AI-assisted workflows — cutting costs, accelerating throughput, and compounding your growth.</p>
+          <div class="metrics">
+            <div class="metric anim" style="--d:.22s">
+              <div class="m-icon red-icon">↓</div>
+              <div><strong>40%</strong><span>Cost Reduction</span></div>
+            </div>
+            <div class="metric anim" style="--d:.34s">
+              <div class="m-icon grn-icon">↑</div>
+              <div><strong>85%</strong><span>Efficiency Gain</span></div>
+            </div>
+            <div class="metric anim" style="--d:.46s">
+              <div class="m-icon blu-icon">↗</div>
+              <div><strong>3x</strong><span>Profit Growth</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="transform-box anim" style="--d:.1s">
+            <div class="t-card before-card">
+              <div class="t-label red-lbl">BEFORE</div>
+              <div class="t-list">
+                <div class="t-row chaos"><span>📋</span>Manual Data Entry</div>
+                <div class="t-row chaos"><span>📞</span>Phone Scheduling</div>
+                <div class="t-row chaos"><span>📁</span>Paper Invoicing</div>
+                <div class="t-row chaos"><span>📧</span>Scattered Emails</div>
+              </div>
+            </div>
+            <div class="t-arrow">
+              <div class="t-arrow-glyph">→</div><span>AYASC</span>
+            </div>
+            <div class="t-card after-card">
+              <div class="t-label grn-lbl">AFTER</div>
+              <div class="t-list">
+                <div class="t-row order"><span>⚡</span>Auto Data Sync</div>
+                <div class="t-row order"><span>🤖</span>AI Scheduling</div>
+                <div class="t-row order"><span>💳</span>Digital Invoicing</div>
+                <div class="t-row order"><span>📡</span>Unified Comms</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUTSOURCING ===== -->
+  <section class="sec out-sec" id="services">
+    <div class="sec-tag">03 — Outsourcing</div>
+    <div class="wrap">
+      <h2 class="sec-title centered anim">Stop Managing Chaos.<br><em>Start Managing Results.</em></h2>
+      <div class="compare-wrap">
+        <div class="cmp-col traditional anim" style="--d:0s">
+          <div class="cmp-head bad-head">Traditional Model</div>
+          <ul class="cmp-list">
+            <li>❌ Multiple disconnected vendors</li>
+            <li>❌ Communication breakdowns</li>
+            <li>❌ Inconsistent quality</li>
+            <li>❌ Hidden costs &amp; overruns</li>
+            <li>❌ No unified reporting</li>
+            <li>❌ Slow response times</li>
+          </ul>
+        </div>
+        <div class="cmp-vs anim" style="--d:.1s">VS</div>
+        <div class="cmp-col ayasc-col anim" style="--d:.2s">
+          <div class="cmp-head good-head">AYASC Model</div>
+          <ul class="cmp-list">
+            <li>✅ Single managed partner</li>
+            <li>✅ Transparent communication</li>
+            <li>✅ Guaranteed SLA quality</li>
+            <li>✅ Predictable pricing</li>
+            <li>✅ Live unified dashboard</li>
+            <li>✅ 24/7 dedicated support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SALES & MARKETING ===== -->
+  <section class="sec sales-sec" id="sales">
+    <div class="sec-tag">04 — Sales &amp; Marketing</div>
+    <div class="wrap">
+      <div class="two-col">
+        <div class="col-left">
+          <h2 class="sec-title anim">Turn Visibility<br>Into <em>Revenue</em></h2>
+          <p class="sec-desc anim" style="--d:.12s">We build and run campaigns that generate qualified leads, manage
+            your pipeline, and produce measurable ROI growth through data-driven marketing.</p>
+        </div>
+        <div class="col-right">
+          <div class="dash-mock anim" style="--d:.15s">
+            <div class="dm-header">
+              <span class="dm-dot dm-r"></span><span class="dm-dot dm-y"></span><span class="dm-dot dm-g"></span>
+              <span class="dm-title">AYASC Marketing Hub</span>
+            </div>
+            <div class="dm-stats">
+              <div class="dm-stat"><span class="dm-num">2,847</span><small>Leads / Month</small></div>
+              <div class="dm-stat"><span class="dm-num green-num">↑ 124%</span><small>ROI Growth</small></div>
+              <div class="dm-stat"><span class="dm-num">$98k</span><small>Revenue</small></div>
+            </div>
+            <div class="dm-chart">
+              <svg viewBox="0 0 300 90" preserveAspectRatio="none" class="dm-svg">
+                <defs>
+                  <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#00ff9d" stop-opacity=".35" />
+                    <stop offset="100%" stop-color="#00ff9d" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,80 C40,75 70,65 100,50 C130,35 160,22 200,12 C230,6 265,2 300,1 L300,90 L0,90Z"
+                  fill="url(#dg)" />
+                <path class="chart-path" d="M0,80 C40,75 70,65 100,50 C130,35 160,22 200,12 C230,6 265,2 300,1"
+                  fill="none" stroke="#00ff9d" stroke-width="2" />
+              </svg>
+              <div class="dm-xlabels"><span>Jan</span><span>Apr</span><span>Jul</span><span>Dec</span></div>
+            </div>
+            <div class="dm-camps">
+              <div class="dm-camp"><span class="camp-dot" style="background:#00ff9d"></span><span>SEO
+                  Campaign</span><strong>+87%</strong></div>
+              <div class="dm-camp"><span class="camp-dot" style="background:#09f"></span><span>Social
+                  Ads</span><strong>+124%</strong></div>
+              <div class="dm-camp"><span class="camp-dot" style="background:#f66"></span><span>Email
+                  Flows</span><strong>+61%</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOFTWARE & SYSTEMS ===== -->
+  <section class="sec soft-sec" id="software">
+    <div class="sec-tag">05 — Software &amp; Systems</div>
+    <div class="wrap">
+      <h2 class="sec-title centered anim">From Paper Piles<br>to <em>Digital Power</em></h2>
+      <div class="soft-split anim" style="--d:.15s">
+        <div class="sp-panel sp-old">
+          <div class="sp-label">BEFORE — Paper chaos</div>
+          <div class="paper-list">
+            <div class="paper-item">📄 Invoice_final_v3.xlsx</div>
+            <div class="paper-item">📋 Client_list_2023.doc</div>
+            <div class="paper-item">📁 Reports_Q2 (old copy)/</div>
+            <div class="paper-item">📝 Meeting_notes_photo.jpg</div>
+            <div class="paper-item faded">📄 Budget_draft.xlsx</div>
+          </div>
+        </div>
+        <div class="sp-arrow-wrap">
+          <div class="sp-arrow">→</div><span>AYASC</span>
+        </div>
+        <div class="sp-panel sp-new">
+          <div class="sp-label">AFTER — Unified digital</div>
+          <div class="digi-list">
+            <div class="digi-item"><span class="dtag g">● Live</span>ERP Dashboard</div>
+            <div class="digi-item"><span class="dtag b">↑ 12%</span>Inventory Auto-sync</div>
+            <div class="digi-item"><span class="dtag g">● Live</span>Finance Reports</div>
+            <div class="digi-item"><span class="dtag p">AI</span>Smart Analytics</div>
+            <div class="digi-item"><span class="dtag b">🔒</span>Secure Cloud Backup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI DEV ===== -->
+  <section class="sec ai-sec" id="ai">
+    <canvas id="aiCanvas"></canvas>
+    <div class="sec-tag">06 — AI Development</div>
+    <div class="wrap ai-wrap">
+      <div class="two-col">
+        <div class="col-left">
+          <h2 class="sec-title anim">Intelligence<br>Built <em>For You</em></h2>
+          <p class="sec-desc anim" style="--d:.12s">We develop custom AI tools, fine-tuned language models, and
+            intelligent automation workflows tailored precisely to your business operations.</p>
+        </div>
+        <div class="col-right">
+          <div class="ai-cards">
+            <div class="ai-card anim" style="--d:0s">
+              <div class="ai-icon">🧠</div>
+              <h4>Custom LLM Systems</h4>
+              <p>Language models trained on your business data for intelligent support.</p>
+            </div>
+            <div class="ai-card anim" style="--d:.1s">
+              <div class="ai-icon">⚙️</div>
+              <h4>Automation Workflows</h4>
+              <p>End-to-end task automation that learns and improves over time.</p>
+            </div>
+            <div class="ai-card anim" style="--d:.2s">
+              <div class="ai-icon">🔍</div>
+              <h4>Predictive Analytics</h4>
+              <p>AI-powered forecasting to pre-empt trends and optimize decisions.</p>
+            </div>
+            <div class="ai-card anim" style="--d:.3s">
+              <div class="ai-icon">💬</div>
+              <h4>AI Chat &amp; Support</h4>
+              <p>Smart customer service agents available around the clock.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WEB DEV ===== -->
+  <section class="sec web-sec" id="web">
+    <div class="sec-tag">07 — Web Development</div>
+    <div class="wrap">
+      <h2 class="sec-title centered anim">Dead Sites →<br><em>Living Platforms</em></h2>
+      <div class="web-split anim" style="--d:.15s">
+        <div class="web-panel web-old">
+          <div class="browser-top">
+            <span class="bd"></span><span class="bd"></span><span class="bd"></span>
+            <span class="burl">old-website.com</span>
+          </div>
+          <div class="browser-body old-body">
+            <div class="ob-nav"></div>
+            <div class="ob-hero"></div>
+            <div class="ob-texts">
+              <div class="ob-line"></div>
+              <div class="ob-line"></div>
+              <div class="ob-line short"></div>
+            </div>
+            <p class="web-label bad-label">Outdated. Static. Forgettable.</p>
+          </div>
+        </div>
+        <div class="web-arrow-mid"><span>AYASC</span><span class="wa-arrow">→</span></div>
+        <div class="web-panel web-new">
+          <div class="browser-top modern-top">
+            <span class="bd g"></span><span class="bd y"></span><span class="bd r"></span>
+            <span class="burl green-url">ayasc.io</span>
+          </div>
+          <div class="browser-body new-body">
+            <div class="nb-hdr">
+              <svg viewBox="0 0 50 14" class="nb-logo"><text x="0" y="12" font-family="Syne,sans-serif"
+                  font-weight="800" font-size="11" fill="#00ff9d" letter-spacing="1">AYASC</text></svg>
+              <div class="nb-nav"><span></span><span></span><span></span></div>
+            </div>
+            <div class="nb-hero">
+              <div class="nb-text">
+                <div class="nb-h1 shimmer"></div>
+                <div class="nb-sub"></div>
+                <div class="nb-cta"></div>
+              </div>
+              <div class="nb-img"></div>
+            </div>
+            <p class="web-label good-label">Interactive. Fast. Unforgettable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APP DEV ===== -->
+  <section class="sec app-sec" id="app">
+    <div class="sec-tag">08 — App Development</div>
+    <div class="wrap">
+      <div class="two-col">
+        <div class="col-left">
+          <h2 class="sec-title anim">Apps That <em>Work</em><br>While You Sleep</h2>
+          <p class="sec-desc anim" style="--d:.12s">From client-facing mobile apps to powerful internal systems, we
+            build everything your business needs to operate at scale.</p>
+          <div class="app-types anim" style="--d:.24s">
+            <div class="atype">📱 Mobile Applications</div>
+            <div class="atype">🖥 Internal Systems</div>
+            <div class="atype">🤝 Client Platforms</div>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="phones-stage anim" style="--d:.1s">
+            <!-- Left side phone -->
+            <div class="sp-phone sp-left">
+              <div class="sph-screen">
+                <div class="sph-hdr">CRM</div>
+                <div class="sph-list">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+            <!-- Main phone -->
+            <div class="main-phone">
+              <div class="mph-screen">
+                <div class="mph-bar">
+                  <div class="mph-dot"></div><span>AYASC App</span>
+                </div>
+                <div class="mph-greet">Good Morning, Ahmed 👋</div>
+                <div class="mph-cards">
+                  <div class="mph-card g">↑ Sales<br><strong>+47%</strong></div>
+                  <div class="mph-card b">Tasks<br><strong>12 Done</strong></div>
+                </div>
+                <div class="mph-chart">
+                  <div style="height:30%"></div>
+                  <div style="height:55%"></div>
+                  <div style="height:42%"></div>
+                  <div style="height:78%"></div>
+                  <div style="height:65%"></div>
+                  <div style="height:92%"></div>
+                  <div style="height:80%"></div>
+                </div>
+                <div class="mph-nav"><span>🏠</span><span>📊</span><span>💬</span><span>⚙️</span></div>
+              </div>
+            </div>
+            <!-- Right side phone -->
+            <div class="sp-phone sp-right">
+              <div class="sph-screen">
+                <div class="sph-hdr">Analytics</div>
+                <svg viewBox="0 0 80 80" class="donut">
+                  <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="12" />
+                  <circle cx="40" cy="40" r="28" fill="none" stroke="#7b5cff" stroke-width="12"
+                    stroke-dasharray="70 106" stroke-dashoffset="-10" />
+                  <circle cx="40" cy="40" r="28" fill="none" stroke="#09f" stroke-width="12" stroke-dasharray="40 136"
+                    stroke-dashoffset="-80" />
+                  <circle cx="40" cy="40" r="28" fill="none" stroke="#00ff9d" stroke-width="12"
+                    stroke-dasharray="26 150" stroke-dashoffset="-120" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="sec about-sec" id="about">
+    <div class="sec-tag">09 — About AYASC</div>
+    <div class="wrap">
+      <div class="two-col">
+        <div class="col-left">
+          <h2 class="sec-title anim">About <em>AYASC</em></h2>
+          <p class="sec-desc anim" style="--d:.1s">AYASC is a digital transformation powerhouse dedicated to the growth
+            of local businesses. We combine cutting-edge technology with deep operational expertise to deliver real,
+            measurable results.</p>
+          <p class="sec-desc anim" style="--d:.2s;margin-top:1rem">Founded with a mission to democratize digital tools
+            for every business, we believe local economies deserve enterprise-grade solutions.</p>
+          <div class="mission-grid anim" style="--d:.3s">
+            <div class="mission-box">
+              <strong>Mission</strong>
+              <p>Empower local businesses with tools that make them globally competitive.</p>
+            </div>
+            <div class="mission-box">
+              <strong>Vision</strong>
+              <p>A world where every business — large or small — thrives in the digital era.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-right">
+          <div class="contact-card anim" style="--d:.1s">
+            <h3>Get In Touch</h3>
+            <form id="contactForm" novalidate>
+              <div class="fg"><input type="text" placeholder="Your Name" required /></div>
+              <div class="fg"><input type="email" placeholder="Email Address" required /></div>
+              <div class="fg"><input type="text" placeholder="Business Name" /></div>
+              <div class="fg"><textarea placeholder="Tell us about your project..." rows="4"></textarea></div>
+              <button type="submit" class="btn-primary full" id="submitBtn">Send Message →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo-link">
+            <img src="logo.png" class="footer-logo" alt="AYASC Logo">
+          </a>
+
+          <p>Connecting and transforming local businesses through automation, AI, and digital excellence.</p>
+          <div class="socials">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="Instagram">ig</a>
+            <a href="#" aria-label="Facebook">fb</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#network">Business Network</a></li>
+            <li><a href="#automation">Automation</a></li>
+            <li><a href="#sales">Sales &amp; Marketing</a></li>
+            <li><a href="#ai">AI Development</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Solutions</h5>
+          <ul>
+            <li><a href="#software">Software Systems</a></li>
+            <li><a href="#web">Web Development</a></li>
+            <li><a href="#app">App Development</a></li>
+            <li><a href="#services">Outsourcing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:hello@ayasc.io">hello@ayasc.io</a></li>
+            <li><a href="tel:+923001234567">+92 300 123 4567</a></li>
+            <li>Karachi, Pakistan</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 AYASC. All rights reserved.</span>
+        <span>Built with precision.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
